@@ -408,7 +408,7 @@ func (c *Config) parsePersistentNodes(path string) []*discover.Node {
 	var ephemeral string
 	if keydir == "" {
 		// There is no datadir.
-		keydir, err = ioutil.TempDir("", "go-multichain-keystore")
+		keydir, err = ioutil.TempDir("", "go-valueRouter-keystore")
 		ephemeral = keydir
 	}
 

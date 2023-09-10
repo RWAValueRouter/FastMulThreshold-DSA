@@ -49,16 +49,16 @@ func (commitment *Commitment) Commit(secrets ...*big.Int) *Commitment {
 	sha3256.Write(rnd.Bytes())
 
 	for _, secret := range secrets {
-	    sha3256.Write([]byte("hello multichain"))
+	    sha3256.Write([]byte("hello valueRouter"))
 	    sha3256.Write(secret.Bytes())
-	    sha3256.Write([]byte("hello multichain"))
+	    sha3256.Write([]byte("hello valueRouter"))
 	}
 
 	digestKeccak256 := sha3256.Sum(nil)
 
 	//second, hash with the SHA3-256
 	sha3256.Write(digestKeccak256)
-	sha3256.Write([]byte("hello multichain"))
+	sha3256.Write([]byte("hello valueRouter"))
 	digest := sha3256.Sum(nil)
 
 	// convert the hash ([]byte) to big.Int
@@ -90,13 +90,13 @@ func (commitment *Commitment) Verify(keytype string) bool {
 	sha3256.Write(D[0].Bytes())
 	
 	for _, secret := range D[1:] {
-	    sha3256.Write([]byte("hello multichain"))
+	    sha3256.Write([]byte("hello valueRouter"))
 	    sha3256.Write(secret.Bytes())
-	    sha3256.Write([]byte("hello multichain"))
+	    sha3256.Write([]byte("hello valueRouter"))
 	}
 	digestKeccak256 := sha3256.Sum(nil)
 	sha3256.Write(digestKeccak256)
-	sha3256.Write([]byte("hello multichain"))
+	sha3256.Write([]byte("hello valueRouter"))
 	computeDigest := sha3256.Sum(nil)
 
 	computeDigestBigInt := new(big.Int).SetBytes(computeDigest)
